@@ -39,6 +39,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
+import androidx.hilt.navigation.compose.hiltViewModel
 import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -124,14 +125,13 @@ fun HomeScreen( ) {
 }
 
 @Composable
-fun Screen1() {
+fun Screen1(viewModel: HomeViewModel = hiltViewModel()) {
     val context = LocalContext.current
     Button(onClick = {
-
+        viewModel.saveVerbsInDatabase()
     }) {
-       Text(text = "CLcIK ME")
+       Text(text = "CLIck ME")
     }
-
 
 }
 
