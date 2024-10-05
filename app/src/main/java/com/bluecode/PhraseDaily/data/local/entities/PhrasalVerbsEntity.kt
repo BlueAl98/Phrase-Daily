@@ -8,13 +8,15 @@ import com.bluecode.PhraseDaily.domain.model.PhrasalVerb
 data class PhrasalVerbsEntity(
     @PrimaryKey(autoGenerate = true) val id: Int = 0,
     val phrase_eng: String,
-    val phrase_esp: String
+    val phrase_esp: String,
+    val isCheck: Boolean = false
 ){
     fun toDomain(): PhrasalVerb {
         return PhrasalVerb(
             id = id,
             phrase_eng = phrase_eng,
-            phrase_esp = phrase_esp
+            phrase_esp = phrase_esp,
+            isCheck = isCheck
         )
     }
 }

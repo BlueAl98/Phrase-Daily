@@ -5,6 +5,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.bluecode.PhraseDaily.presentation.homeScreen.HomeScreen
+import com.bluecode.PhraseDaily.presentation.mainScreen.MainScreen
 import kotlinx.serialization.Serializable
 
 
@@ -13,7 +14,7 @@ import kotlinx.serialization.Serializable
 object SplashScreen
 
 @Serializable
-object HomeScreen
+object MainScreenObj
 
 @Serializable
 object LoginScreen
@@ -25,11 +26,11 @@ fun Navigation() {
 
     NavHost(
         navController = navController,
-        startDestination = HomeScreen
+        startDestination = MainScreenObj
     ) {
 
-        composable<HomeScreen> {
-           HomeScreen()
+        composable<MainScreenObj> {
+           MainScreen()
         }
 
 

@@ -15,4 +15,6 @@ interface PhrasalVerbDao {
     @Query("SELECT * FROM phrasal_verbs")
     suspend fun getPhrasalVerbs(): List<PhrasalVerbsEntity>
 
+
+
 }
