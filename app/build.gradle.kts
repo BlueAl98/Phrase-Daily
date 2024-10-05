@@ -82,6 +82,7 @@ dependencies {
     implementation(libs.androidx.datastore.core.android)
     implementation(libs.androidx.datastore.preferences.core.jvm)
     implementation(libs.androidx.appcompat)
+    testImplementation(libs.junit.junit)
     //Dagger
     ksp(libs.hilt.android.compiler)
     implementation(libs.hilt.android)
@@ -126,4 +127,19 @@ dependencies {
     androidTestImplementation(libs.androidx.ui.test.junit4)
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
+
+
+    testImplementation (libs.mockk)
+
+
+// For Coroutine testing
+    testImplementation (libs.kotlinx.coroutines.test)
+
+// For Room testing
+    androidTestImplementation (libs.androidx.room.testing)
+
+// For Flow testing (optional)
+    testImplementation (libs.kotlinx.coroutines.test.v152)
+
+
 }
