@@ -15,6 +15,9 @@ interface PhrasalVerbDao {
     @Query("SELECT * FROM phrasal_verbs")
     suspend fun getPhrasalVerbs(): List<PhrasalVerbsEntity>
 
+    @Query("SELECT * FROM phrasal_verbs WHERE isCheck = :isCheck")
+    suspend fun getPhrasalVerbByCheck(isCheck: Boolean): List<PhrasalVerbsEntity>
+
 
 
 }

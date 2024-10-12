@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.work.ExistingWorkPolicy
 import androidx.work.OneTimeWorkRequestBuilder
 import androidx.work.PeriodicWorkRequestBuilder
 import androidx.work.WorkManager
@@ -19,8 +20,15 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        val notificationWorkRequest = OneTimeWorkRequestBuilder<NotificationsWorker>()
-        WorkManager.getInstance(this).enqueue(notificationWorkRequest.build())
+        // Crear el work request único
+        val notificationWorkRequest = OneTimeWorkRequestBuilder<NotificationsWorker>().build()
+
+        // Encolar el trabajo de forma única
+        WorkManager.getInstance(this).enqueueUniqueWork(
+            "NotificationsWorker", // Nombre único del trabajo
+            ExistingWorkPolicy.KEEP, // Política para mantener el trabajo existente
+            notificationWorkRequest
+        )
         setContent {
             BaseProyectTheme {
                 Navigation()

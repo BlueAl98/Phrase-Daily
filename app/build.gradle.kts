@@ -82,6 +82,7 @@ dependencies {
     implementation(libs.androidx.datastore.core.android)
     implementation(libs.androidx.datastore.preferences.core.jvm)
     implementation(libs.androidx.appcompat)
+    implementation(libs.places)
     testImplementation(libs.junit.junit)
     //Dagger
     ksp(libs.hilt.android.compiler)

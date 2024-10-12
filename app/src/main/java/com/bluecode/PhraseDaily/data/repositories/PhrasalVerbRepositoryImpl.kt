@@ -31,4 +31,13 @@ class PhrasalVerbRepositoryImpl @Inject constructor(
         }
 
     }
+
+    override suspend fun getPhrsalVerByCheck(isCheck: Boolean): Flow<List<PhrasalVerb>> {
+        return flow {
+            val phrasalVerbsEntity = phrasalVerbDao.getPhrasalVerbByCheck(isCheck).map {
+                it.toDomain()
+            }
+            emit(phrasalVerbsEntity)
+        }
+    }
 }

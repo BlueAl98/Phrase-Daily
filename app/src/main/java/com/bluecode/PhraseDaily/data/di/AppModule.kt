@@ -1,11 +1,17 @@
 package com.bluecode.PhraseDaily.data.di
 
 import android.content.Context
+import androidx.datastore.core.DataStore
+import androidx.datastore.preferences.core.PreferenceDataStoreFactory
+import androidx.datastore.preferences.core.Preferences
+import androidx.datastore.preferences.preferencesDataStoreFile
 import androidx.room.Room
 import com.bluecode.PhraseDaily.data.local.PhrasalDatabase
 import com.bluecode.PhraseDaily.data.local.dao.PhrasalVerbDao
+import com.bluecode.PhraseDaily.data.local.datastore.DataStoreSourceRepoImp
 import com.bluecode.PhraseDaily.data.network.Api
 import com.bluecode.PhraseDaily.data.repositories.PhrasalVerbRepositoryImpl
+import com.bluecode.PhraseDaily.domain.repositories.DataStoreRepository
 import com.bluecode.PhraseDaily.domain.repositories.PhrasalVerbRepository
 import dagger.Module
 import dagger.Provides
@@ -71,6 +77,20 @@ object AppModule {
     }
 
 
+    //Data store
+    @Provides
+    @Singleton
+    fun provideDataStore(@ApplicationContext context: Context): DataStore<Preferences> {
+        return PreferenceDataStoreFactory.create(
+            produceFile = { context.preferencesDataStoreFile("app_preferences") }
+        )
+    }
+
+    @Provides
+    @Singleton
+    fun provideDataStoreRepository(dataStore: DataStore<Preferences>): DataStoreRepository {
+        return DataStoreSourceRepoImp(dataStore)
+    }
 
 
 

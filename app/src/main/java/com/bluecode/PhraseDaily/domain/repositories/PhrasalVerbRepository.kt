@@ -8,4 +8,6 @@ interface PhrasalVerbRepository {
     suspend fun getPhrasalVerbs(): Flow<List<PhrasalVerb>>
 
     suspend fun saveVerbsInDatabase()
+
+    suspend fun getPhrsalVerByCheck(isCheck: Boolean): Flow<List<PhrasalVerb>>
 }
