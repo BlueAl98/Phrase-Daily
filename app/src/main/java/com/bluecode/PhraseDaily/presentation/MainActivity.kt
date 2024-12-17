@@ -21,7 +21,7 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         // Crear el work request único
-        val notificationWorkRequest = OneTimeWorkRequestBuilder<NotificationsWorker>().build()
+       val notificationWorkRequest = OneTimeWorkRequestBuilder<NotificationsWorker>().build()
 
         // Encolar el trabajo de forma única
         WorkManager.getInstance(this).enqueueUniqueWork(

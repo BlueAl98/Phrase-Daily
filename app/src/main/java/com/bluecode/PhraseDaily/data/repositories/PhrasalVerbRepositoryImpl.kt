@@ -40,4 +40,13 @@ class PhrasalVerbRepositoryImpl @Inject constructor(
             emit(phrasalVerbsEntity)
         }
     }
+
+    override suspend fun getPhrasalVerbsInDB(): Flow<List<PhrasalVerb>> {
+        return flow {
+            val phrasalVerbsEntity = phrasalVerbDao.getPhrasalVerbs().map {
+                it.toDomain()
+            }
+            emit(phrasalVerbsEntity)
+        }
+    }
 }

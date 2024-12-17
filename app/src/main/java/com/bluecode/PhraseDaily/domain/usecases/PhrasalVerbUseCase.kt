@@ -13,9 +13,11 @@ class PhrasalVerbUseCase @Inject constructor(
         repository.saveVerbsInDatabase()
     }
 
-    suspend fun getPhrasalVerbs(): Flow<List<PhrasalVerb>> {
+    suspend fun getAllPhrsalVerbs(): Flow<List<PhrasalVerb>> {
         return repository.getPhrasalVerbs()
     }
+
+
 
 
 }
